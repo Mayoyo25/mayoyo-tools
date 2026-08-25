@@ -1,0 +1,8 @@
+/*
+  Shared Tailwind entry point for ALL mayoyo-tools sub-projects.
+  Tailwind v4 auto-scans the project directory (minus .gitignore'd paths)
+  for class names, so any HTML/JS file under this repo — in any current
+  or future tool folder — is picked up automatically. No content globs
+  to maintain as you add tools.
+*/
+@import "tailwindcss";

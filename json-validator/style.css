@@ -1,0 +1,43 @@
+/* Small amount of CSS outside Tailwind for editor-specific behavior. */
+
+html {
+  color-scheme: dark;
+}
+
+textarea {
+  tab-size: 2;
+}
+
+textarea::selection {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+#outputWrap::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#outputWrap::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+#outputWrap::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+}
+
+#outputWrap::-webkit-scrollbar-thumb:hover,
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+.error-line {
+  color: #fca5a5;
+}
+
+.error-caret {
+  color: #f87171;
+}
