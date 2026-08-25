@@ -259,24 +259,38 @@
   }
 
   async function loadLargeSample() {
-    try {
-      largeSampleBtn.disabled = true;
+  try {
+    largeSampleBtn.disabled = true;
+    largeSampleBtn.textContent = "Loading...";
 
-      const response = await fetch("sample.json");
+    const response = await fetch("./sample.json", {
+      cache: "no-store"
+    });
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
+    console.log("Sample response:", response.status, response.url);
 
-      input.value = await response.text();
-      validate();
-    } catch (error) {
-      console.error("Failed to load sample.json:", error);
-      showToast("Could not load sample.json");
-    } finally {
-      largeSampleBtn.disabled = false;
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
+
+    const text = await response.text();
+
+    console.log("Sample size:", text.length);
+
+    if (!text.trim()) {
+      throw new Error("sample.json is empty");
+    }
+
+    input.value = text;
+    validate();
+  } catch (error) {
+    console.error("Large sample error:", error);
+    showToast(error.message || "Could not load sample.json");
+  } finally {
+    largeSampleBtn.disabled = false;
+    largeSampleBtn.textContent = "Large Sample";
   }
+}
 
   function clear() {
     input.value = "";
