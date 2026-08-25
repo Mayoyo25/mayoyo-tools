@@ -1,0 +1,676 @@
+{
+  "company": {
+    "id": "COMP-001",
+    "name": "Mayoyo Technologies",
+    "industry": "Software Development",
+    "founded": 2021,
+    "headquarters": {
+      "country": "Kenya",
+      "city": "Nairobi",
+      "office": {
+        "building": "Innovation Tower",
+        "floor": 7,
+        "address": {
+          "street": "Ngong Road",
+          "area": "Kilimani",
+          "postalCode": "00100",
+          "coordinates": {
+            "latitude": -1.2921,
+            "longitude": 36.8219
+          }
+        }
+      }
+    },
+    "contact": {
+      "email": "hello@mayoyotech.example",
+      "phone": "+254700000000",
+      "social": {
+        "website": "https://example.com",
+        "github": "https://github.com/example",
+        "linkedin": "https://linkedin.com/company/example"
+      }
+    },
+    "departments": [
+      {
+        "id": "DEP-001",
+        "name": "Engineering",
+        "manager": {
+          "id": "EMP-001",
+          "name": "Alex Mwangi",
+          "role": "Engineering Manager",
+          "contact": {
+            "email": "alex@example.com",
+            "preferences": {
+              "notifications": true,
+              "channels": [
+                "email",
+                "slack"
+              ]
+            }
+          }
+        },
+        "teams": [
+          {
+            "name": "Frontend",
+            "technology": [
+              "React",
+              "TypeScript",
+              "Astro"
+            ],
+            "members": [
+              {
+                "id": "EMP-002",
+                "name": "Jane Doe",
+                "role": "Senior Frontend Engineer",
+                "skills": {
+                  "languages": [
+                    "TypeScript",
+                    "JavaScript"
+                  ],
+                  "frameworks": [
+                    {
+                      "name": "React",
+                      "level": "expert",
+                      "years": 6
+                    },
+                    {
+                      "name": "Astro",
+                      "level": "advanced",
+                      "years": 3
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "EMP-003",
+                "name": "John Smith",
+                "role": "Frontend Engineer",
+                "skills": {
+                  "languages": [
+                    "JavaScript",
+                    "CSS"
+                  ],
+                  "frameworks": [
+                    "React",
+                    "Next.js"
+                  ],
+                  "certifications": [
+                    {
+                      "name": "AWS Certified Developer",
+                      "issuer": "Amazon Web Services",
+                      "year": 2025
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Backend",
+            "technology": [
+              "Node.js",
+              "Python",
+              "PostgreSQL"
+            ],
+            "members": [
+              {
+                "id": "EMP-004",
+                "name": "Michael Otieno",
+                "role": "Backend Engineer",
+                "skills": {
+                  "languages": [
+                    "Python",
+                    "TypeScript",
+                    "SQL"
+                  ],
+                  "frameworks": [
+                    "FastAPI",
+                    "Django",
+                    "Express"
+                  ],
+                  "databases": {
+                    "relational": [
+                      {
+                        "name": "PostgreSQL",
+                        "years": 5
+                      },
+                      {
+                        "name": "MySQL",
+                        "years": 4
+                      }
+                    ],
+                    "nosql": [
+                      {
+                        "name": "MongoDB",
+                        "years": 3
+                      },
+                      {
+                        "name": "Redis",
+                        "years": 3
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DEP-002",
+        "name": "Product",
+        "manager": {
+          "id": "EMP-005",
+          "name": "Sarah Wanjiku",
+          "role": "Product Manager"
+        },
+        "roadmap": {
+          "currentQuarter": "Q3-2026",
+          "priorities": [
+            {
+              "id": "PRI-001",
+              "title": "Improve onboarding",
+              "status": "in_progress",
+              "metrics": {
+                "target": {
+                  "completionRate": 85,
+                  "timeToCompleteSeconds": 120
+                },
+                "current": {
+                  "completionRate": 71,
+                  "timeToCompleteSeconds": 184
+                }
+              }
+            },
+            {
+              "id": "PRI-002",
+              "title": "Launch analytics",
+              "status": "planned",
+              "dependencies": [
+                {
+                  "team": "Engineering",
+                  "status": "ready"
+                },
+                {
+                  "team": "Design",
+                  "status": "in_progress"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "PROJ-001",
+      "name": "Analytics Platform",
+      "status": "active",
+      "priority": "high",
+      "budget": {
+        "currency": "USD",
+        "allocated": 125000,
+        "spent": 73420,
+        "remaining": 51580
+      },
+      "timeline": {
+        "start": "2026-05-01",
+        "milestones": [
+          {
+            "name": "Architecture",
+            "date": "2026-05-15",
+            "status": "completed"
+          },
+          {
+            "name": "MVP",
+            "date": "2026-07-30",
+            "status": "completed"
+          },
+          {
+            "name": "Beta",
+            "date": "2026-09-15",
+            "status": "in_progress"
+          },
+          {
+            "name": "Production",
+            "date": "2026-11-01",
+            "status": "planned"
+          }
+        ]
+      },
+      "repository": {
+        "provider": "github",
+        "organization": "mayoyo",
+        "name": "analytics-platform",
+        "branches": {
+          "default": "main",
+          "development": "develop",
+          "protected": [
+            {
+              "name": "main",
+              "rules": {
+                "requirePullRequest": true,
+                "requiredApprovals": 2,
+                "requireStatusChecks": true,
+                "allowForcePush": false
+              }
+            }
+          ]
+        }
+      },
+      "architecture": {
+        "frontend": {
+          "framework": "Astro",
+          "language": "TypeScript",
+          "components": [
+            "React",
+            "Tailwind CSS"
+          ]
+        },
+        "backend": {
+          "runtime": "Node.js",
+          "framework": "Fastify",
+          "services": [
+            {
+              "name": "api",
+              "port": 3000,
+              "replicas": 3
+            },
+            {
+              "name": "worker",
+              "port": 3001,
+              "replicas": 2
+            }
+          ]
+        },
+        "database": {
+          "primary": {
+            "engine": "PostgreSQL",
+            "version": "17",
+            "host": "db.internal.example",
+            "port": 5432,
+            "pool": {
+              "min": 5,
+              "max": 30,
+              "idleTimeout": 30000
+            }
+          },
+          "cache": {
+            "engine": "Redis",
+            "version": "8",
+            "ttl": {
+              "default": 3600,
+              "session": 86400,
+              "analytics": 300
+            }
+          }
+        },
+        "infrastructure": {
+          "cloud": "Cloudflare",
+          "regions": [
+            {
+              "name": "africa-east",
+              "primary": true,
+              "availabilityZones": [
+                "zone-a",
+                "zone-b"
+              ]
+            },
+            {
+              "name": "europe-west",
+              "primary": false,
+              "availabilityZones": [
+                "zone-a",
+                "zone-b",
+                "zone-c"
+              ]
+            }
+          ],
+          "scaling": {
+            "enabled": true,
+            "rules": [
+              {
+                "metric": "cpu",
+                "operator": ">",
+                "threshold": 70,
+                "action": "scale_up",
+                "amount": 2
+              },
+              {
+                "metric": "cpu",
+                "operator": "<",
+                "threshold": 25,
+                "action": "scale_down",
+                "amount": 1
+              }
+            ]
+          }
+        }
+      },
+      "features": [
+        {
+          "name": "Dashboard",
+          "enabled": true,
+          "permissions": {
+            "admin": [
+              "read",
+              "write",
+              "delete"
+            ],
+            "manager": [
+              "read",
+              "write"
+            ],
+            "user": [
+              "read"
+            ]
+          }
+        },
+        {
+          "name": "Export",
+          "enabled": true,
+          "formats": [
+            "csv",
+            "json",
+            "xlsx",
+            "pdf"
+          ]
+        },
+        {
+          "name": "AI Insights",
+          "enabled": false,
+          "configuration": {
+            "provider": null,
+            "model": null,
+            "temperature": 0.2,
+            "maxTokens": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "USR-001",
+      "profile": {
+        "firstName": "David",
+        "lastName": "Kamau",
+        "displayName": "David Kamau",
+        "avatar": "/avatars/david.png"
+      },
+      "account": {
+        "email": "david@example.com",
+        "verified": true,
+        "createdAt": "2025-11-10T09:32:11Z",
+        "lastLogin": "2026-08-25T08:41:02Z"
+      },
+      "roles": [
+        {
+          "name": "admin",
+          "permissions": [
+            {
+              "resource": "users",
+              "actions": [
+                "read",
+                "write",
+                "delete"
+              ]
+            },
+            {
+              "resource": "projects",
+              "actions": [
+                "read",
+                "write",
+                "delete"
+              ]
+            }
+          ]
+        }
+      ],
+      "preferences": {
+        "theme": "dark",
+        "language": "en",
+        "timezone": "Africa/Nairobi",
+        "notifications": {
+          "email": true,
+          "push": true,
+          "sms": false,
+          "digest": {
+            "enabled": true,
+            "frequency": "weekly",
+            "day": "Monday",
+            "time": "08:00"
+          }
+        }
+      },
+      "activity": {
+        "sessions": [
+          {
+            "id": "SES-001",
+            "startedAt": "2026-08-25T08:40:00Z",
+            "device": {
+              "type": "desktop",
+              "os": "Windows",
+              "browser": {
+                "name": "Chrome",
+                "version": "151"
+              }
+            },
+            "location": {
+              "country": "Kenya",
+              "city": "Nairobi"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "timestamp": "2026-08-25T08:42:10Z",
+            "action": "project.view",
+            "resource": "PROJ-001",
+            "metadata": {
+              "source": "dashboard",
+              "durationMs": 842
+            }
+          },
+          {
+            "timestamp": "2026-08-25T08:45:31Z",
+            "action": "report.export",
+            "resource": "analytics",
+            "metadata": {
+              "format": "json",
+              "rows": 15420
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "analytics": {
+    "period": {
+      "start": "2026-08-01",
+      "end": "2026-08-25"
+    },
+    "traffic": {
+      "visitors": 184532,
+      "sessions": 239817,
+      "pageViews": 891245,
+      "sources": {
+        "organic": {
+          "visitors": 82342,
+          "percentage": 44.62
+        },
+        "direct": {
+          "visitors": 42110,
+          "percentage": 22.82
+        },
+        "referral": {
+          "visitors": 31752,
+          "percentage": 17.21
+        },
+        "social": {
+          "visitors": 28328,
+          "percentage": 15.35
+        }
+      }
+    },
+    "devices": [
+      {
+        "type": "desktop",
+        "sessions": 104231,
+        "percentage": 43.46,
+        "operatingSystems": [
+          {
+            "name": "Windows",
+            "percentage": 62.4
+          },
+          {
+            "name": "macOS",
+            "percentage": 28.7
+          },
+          {
+            "name": "Linux",
+            "percentage": 8.9
+          }
+        ]
+      },
+      {
+        "type": "mobile",
+        "sessions": 112391,
+        "percentage": 46.86,
+        "operatingSystems": [
+          {
+            "name": "Android",
+            "percentage": 71.3
+          },
+          {
+            "name": "iOS",
+            "percentage": 28.7
+          }
+        ]
+      },
+      {
+        "type": "tablet",
+        "sessions": 23195,
+        "percentage": 9.68
+      }
+    ],
+    "events": {
+      "page_view": 891245,
+      "signup": 12541,
+      "login": 32144,
+      "export": 4821,
+      "purchase": 1832,
+      "errors": {
+        "total": 721,
+        "byType": {
+          "validation": 312,
+          "network": 187,
+          "authentication": 96,
+          "server": 84,
+          "unknown": 42
+        }
+      }
+    }
+  },
+  "configuration": {
+    "environment": "production",
+    "debug": false,
+    "features": {
+      "betaDashboard": true,
+      "newNavigation": true,
+      "aiInsights": false,
+      "experimentalCharts": false
+    },
+    "security": {
+      "authentication": {
+        "provider": "oauth",
+        "providers": [
+          {
+            "name": "google",
+            "enabled": true
+          },
+          {
+            "name": "github",
+            "enabled": true
+          },
+          {
+            "name": "microsoft",
+            "enabled": false
+          }
+        ],
+        "session": {
+          "duration": 86400,
+          "refreshEnabled": true,
+          "rotation": {
+            "enabled": true,
+            "interval": 3600
+          }
+        }
+      },
+      "passwordPolicy": {
+        "minimumLength": 12,
+        "requireUppercase": true,
+        "requireLowercase": true,
+        "requireNumber": true,
+        "requireSpecialCharacter": true,
+        "history": 5
+      },
+      "rateLimits": {
+        "api": {
+          "requests": 1000,
+          "windowSeconds": 60
+        },
+        "authentication": {
+          "requests": 10,
+          "windowSeconds": 60
+        }
+      }
+    }
+  },
+  "audit": {
+    "createdBy": "system",
+    "createdAt": "2026-08-25T08:00:00Z",
+    "updatedBy": "USR-001",
+    "updatedAt": "2026-08-25T10:30:00Z",
+    "changes": [
+      {
+        "id": "CHG-001",
+        "timestamp": "2026-08-25T10:20:00Z",
+        "user": "USR-001",
+        "resource": "PROJ-001",
+        "field": "features.aiInsights.enabled",
+        "oldValue": false,
+        "newValue": false,
+        "reason": "Waiting for model integration"
+      },
+      {
+        "id": "CHG-002",
+        "timestamp": "2026-08-25T10:30:00Z",
+        "user": "USR-001",
+        "resource": "PROJ-001",
+        "field": "infrastructure.scaling.enabled",
+        "oldValue": false,
+        "newValue": true,
+        "reason": "Production traffic increase"
+      }
+    ]
+  },
+  "metadata": {
+    "version": "3.7.2",
+    "schemaVersion": "2026-08",
+    "generatedAt": "2026-08-25T10:45:00Z",
+    "tags": [
+      "production",
+      "analytics",
+      "nested",
+      "example"
+    ],
+    "flags": {
+      "isProduction": true,
+      "isTest": false,
+      "isArchived": false,
+      "isDeleted": false
+    }
+  }
+}

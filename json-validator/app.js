@@ -16,6 +16,7 @@
   const validateBtn = document.getElementById("validateBtn");
   const clearBtn = document.getElementById("clearBtn");
   const sampleBtn = document.getElementById("sampleBtn");
+  const largeSampleBtn = document.getElementById("largeSampleBtn");
   const copyBtn = document.getElementById("copyBtn");
   const minifyBtn = document.getElementById("minifyBtn");
   const downloadBtn = document.getElementById("downloadBtn");
@@ -46,7 +47,9 @@
 
   function updateStats(text) {
     charText.textContent = text.length.toLocaleString();
-    lineText.textContent = text.length ? text.split(/\r\n|\r|\n/).length.toLocaleString() : "0";
+    lineText.textContent = text.length
+      ? text.split(/\r\n|\r|\n/).length.toLocaleString()
+      : "0";
   }
 
   function getJsonType(value) {
@@ -82,7 +85,8 @@
     formattedValue = text;
 
     if (!text) {
-      output.innerHTML = '<span class="text-slate-700">Formatted JSON will appear here.</span>';
+      output.innerHTML =
+        '<span class="text-slate-700">Formatted JSON will appear here.</span>';
       return;
     }
 
@@ -124,24 +128,30 @@
 
     if (sourceLine) {
       const safeColumn = Math.max(1, Number(column) || 1);
+
       errorLine.textContent =
-        sourceLine + "\n" +
-        " ".repeat(Math.max(0, safeColumn - 1)) + "^";
+        sourceLine +
+        "\n" +
+        " ".repeat(Math.max(0, safeColumn - 1)) +
+        "^";
     }
   }
 
   function validate() {
     const text = input.value;
+
     updateStats(text);
     clearError();
 
     if (!text.trim()) {
       parsedValue = null;
       formattedValue = "";
+
       setStatus("Waiting for JSON");
       typeText.textContent = "-";
       setOutput("");
       setButtons(false);
+
       return;
     }
 
@@ -161,6 +171,7 @@
       typeText.textContent = "-";
       setOutput("");
       setButtons(false);
+
       showError(error, text);
     }
   }
@@ -170,6 +181,7 @@
     toast.classList.remove("hidden");
 
     clearTimeout(toastTimer);
+
     toastTimer = setTimeout(() => {
       toast.classList.add("hidden");
     }, 1800);
@@ -190,6 +202,7 @@
     if (parsedValue === null) return;
 
     const minified = JSON.stringify(parsedValue);
+
     setOutput(minified);
     showToast("JSON minified");
   }
@@ -206,15 +219,17 @@
 
     link.href = url;
     link.download = "validated.json";
+
     document.body.appendChild(link);
     link.click();
     link.remove();
 
     URL.revokeObjectURL(url);
+
     showToast("JSON downloaded");
   }
 
-  const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10MB
+  const MAX_FILE_BYTES = 10 * 1024 * 1024;
 
   function loadFile(file) {
     if (!file) return;
@@ -227,7 +242,11 @@
     const reader = new FileReader();
 
     reader.onload = () => {
-      input.value = typeof reader.result === "string" ? reader.result : "";
+      input.value =
+        typeof reader.result === "string"
+          ? reader.result
+          : "";
+
       validate();
       showToast(`Loaded ${file.name}`);
     };
@@ -237,6 +256,26 @@
     };
 
     reader.readAsText(file);
+  }
+
+  async function loadLargeSample() {
+    try {
+      largeSampleBtn.disabled = true;
+
+      const response = await fetch("sample.json");
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      input.value = await response.text();
+      validate();
+    } catch (error) {
+      console.error("Failed to load sample.json:", error);
+      showToast("Could not load sample.json");
+    } finally {
+      largeSampleBtn.disabled = false;
+    }
   }
 
   function clear() {
@@ -250,24 +289,36 @@
     setOutput("");
     setButtons(false);
     clearError();
+
     input.focus();
   }
 
   validateBtn.addEventListener("click", validate);
+
   clearBtn.addEventListener("click", clear);
+
   sampleBtn.addEventListener("click", () => {
     input.value = JSON.stringify(sample, null, 2);
     validate();
   });
+
+  largeSampleBtn.addEventListener("click", loadLargeSample);
+
   copyBtn.addEventListener("click", copyOutput);
+
   minifyBtn.addEventListener("click", minify);
+
   downloadBtn.addEventListener("click", download);
 
-  uploadBtn.addEventListener("click", () => fileInput.click());
+  uploadBtn.addEventListener("click", () => {
+    fileInput.click();
+  });
 
   fileInput.addEventListener("change", () => {
     const file = fileInput.files && fileInput.files[0];
-    fileInput.value = ""; // allow re-selecting the same file next time
+
+    fileInput.value = "";
+
     loadFile(file);
   });
 
@@ -275,7 +326,9 @@
 
   input.addEventListener("dragenter", (event) => {
     event.preventDefault();
+
     dragDepth += 1;
+
     dropOverlay.classList.remove("hidden");
     dropOverlay.classList.add("flex");
   });
@@ -286,6 +339,7 @@
 
   input.addEventListener("dragleave", () => {
     dragDepth = Math.max(0, dragDepth - 1);
+
     if (dragDepth === 0) {
       dropOverlay.classList.add("hidden");
       dropOverlay.classList.remove("flex");
@@ -294,22 +348,37 @@
 
   input.addEventListener("drop", (event) => {
     event.preventDefault();
+
     dragDepth = 0;
+
     dropOverlay.classList.add("hidden");
     dropOverlay.classList.remove("flex");
 
-    const file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+    const file =
+      event.dataTransfer &&
+      event.dataTransfer.files &&
+      event.dataTransfer.files[0];
+
     loadFile(file);
   });
 
   input.addEventListener("input", () => {
     updateStats(input.value);
-    setStatus(input.value.trim() ? "Not validated" : "Waiting for JSON");
+
+    setStatus(
+      input.value.trim()
+        ? "Not validated"
+        : "Waiting for JSON"
+    );
+
     clearError();
   });
 
   input.addEventListener("keydown", (event) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+    if (
+      (event.ctrlKey || event.metaKey) &&
+      event.key === "Enter"
+    ) {
       event.preventDefault();
       validate();
     }
