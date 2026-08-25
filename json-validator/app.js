@@ -258,7 +258,7 @@
     reader.readAsText(file);
   }
 
-  async function loadLargeSample() {
+async function loadLargeSample() {
   try {
     largeSampleBtn.disabled = true;
     largeSampleBtn.textContent = "Loading...";
@@ -267,15 +267,11 @@
       cache: "no-store"
     });
 
-    console.log("Sample response:", response.status, response.url);
-
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
 
     const text = await response.text();
-
-    console.log("Sample size:", text.length);
 
     if (!text.trim()) {
       throw new Error("sample.json is empty");
@@ -284,7 +280,7 @@
     input.value = text;
     validate();
   } catch (error) {
-    console.error("Large sample error:", error);
+    console.error("Failed to load sample.json:", error);
     showToast(error.message || "Could not load sample.json");
   } finally {
     largeSampleBtn.disabled = false;
